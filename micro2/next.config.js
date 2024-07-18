@@ -9,12 +9,9 @@ const nextConfig = {
       name: 'remote',
       filename: 'static/chunks/remoteEntry.js',
       exposes: {
-        "./button": './components/ui/button.tsx'
+        "./form": './components/ui/form.tsx'
       },
       shared: {},
-      extraOptions: {
-        exposePages: true,
-      },
     }
     config.plugins.push(
       new NextFederationPlugin(federationConfig),
