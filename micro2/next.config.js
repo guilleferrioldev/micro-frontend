@@ -9,7 +9,8 @@ const nextConfig = {
       name: 'remote',
       filename: 'static/chunks/remoteEntry.js',
       exposes: {
-        "./form": './components/ui/form.tsx'
+        "./form": './components/ui/form.tsx',
+        './table': './components/ui/table.tsx'
       },
       shared: {},
     }

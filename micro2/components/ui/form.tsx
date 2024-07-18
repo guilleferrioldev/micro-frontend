@@ -1,17 +1,14 @@
 import { Button, Form, FormProps, Input } from "antd";
-import { useRouter } from "next/router";
 
 type FieldType = {
     name?: string;
     description?: string;
 };
 
-export default function FormReusable ({style, id}: {style?: React.CSSProperties, id?: string}) {
-    const router = useRouter()
-
+export default function FormReusable ({style, id, executableFunction}: {style?: React.CSSProperties, id?: string, executableFunction: Function}) {
     const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
         console.log('Success:', {values, id: id});
-        router.push("/")
+        executableFunction()
     };
 
     return (
@@ -24,6 +21,7 @@ export default function FormReusable ({style, id}: {style?: React.CSSProperties,
             <Form.Item<FieldType>
                 label="name"
                 name="name"
+                initialValue={"nombre"}
                 rules={[{ required: true, message: 'Please input your name!' }]}
                 >
                 <Input />
@@ -32,6 +30,7 @@ export default function FormReusable ({style, id}: {style?: React.CSSProperties,
             <Form.Item<FieldType>
                 label="description"
                 name="description"
+                initialValue={"desvs"}
                 rules={[{ required: true, message: 'Please input the description!' }]}
                 >
                 <Input />

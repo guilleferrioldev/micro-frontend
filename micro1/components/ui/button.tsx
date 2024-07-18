@@ -1,12 +1,6 @@
 import { Button } from 'antd';
-import { useRouter } from 'next/router';
+import router from "next/router"
 
 export default function NewButton () {
-    const router = useRouter()
-
-    const handleClick = () => {
-        router.push("/nuevo")
-    }
-
-    return <Button onClick={handleClick} type="primary">Insert New Product</Button>
+    return <Button onClick={() => router.push("/nuevo")} type="primary">Insert New Product</Button>
 }

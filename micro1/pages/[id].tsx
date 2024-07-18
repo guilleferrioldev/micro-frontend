@@ -1,6 +1,6 @@
 import WrapperForm from '@/components/ui/wrapperForm'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
+import router from 'next/router';
 
 const FormComponent = dynamic(() => import("remote/form"), {
     ssr: false,
@@ -8,7 +8,6 @@ const FormComponent = dynamic(() => import("remote/form"), {
  })
 
 export default function Page() {
-  const router = useRouter()
   let id: string;
   if (typeof router.query.id === 'string') {
     id = router.query.id;
@@ -21,7 +20,7 @@ export default function Page() {
   return (
     <main style={{ width: '100dvw', height: '100dvh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '10px'}}>
         <WrapperForm id={id}>
-            <FormComponent style={{ maxWidth: 600 }} id={id}/>
+            <FormComponent style={{ maxWidth: 600 }} id={id} executableFunction={() => router.push("/")}/>
         </WrapperForm>
     </main>
   )
