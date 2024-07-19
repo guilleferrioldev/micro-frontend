@@ -13,5 +13,10 @@ export type ResponseData =  {
     createdAt: string;
     updatedAt: string;
 }
+
+export type DataForForm =  {
+    name: string;
+    description: string;
+}
   
 export type ResponseMessage = { message: string }

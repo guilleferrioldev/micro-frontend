@@ -1,2 +1,2 @@
-export * from './_types/linkAsButton';
-export { default } from './_types/linkAsButton';
+export * from './_types/ui/linkAsButton';
+export { default } from './_types/ui/linkAsButton';

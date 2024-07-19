@@ -1,36 +1,41 @@
 import { Button, Form, FormProps, Input } from "antd";
+import useProduct from "@/components/hooks/useProductHook";
+import { DataForForm } from "@/components/types";
 
-type FieldType = {
-    name?: string;
-    description?: string;
-};
+export default function ReusableForm ({style, id, executableFunction}: {style?: React.CSSProperties, id: string, executableFunction: Function}) {
+    let product: DataForForm | undefined
+    if (id === "new") {
+        product = {name : "", description: ""}
+    } else {
+        product = useProduct(id) 
+    }
 
-export default function ReusableForm ({style, id, executableFunction}: {style?: React.CSSProperties, id?: string, executableFunction: Function}) {
-    const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-        console.log('Success:', {values, id: id});
+    const onFinish: FormProps<DataForForm>['onFinish'] = (values) => {
         executableFunction()
     };
 
     return (
+        <>        
+        {product && 
         <Form style={style}
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
             onFinish={onFinish}
-            initialValues={{ remember: false }}
-            autoComplete="off">
-            <Form.Item<FieldType>
+            initialValues={{ remember: true }}
+            autoComplete="on">
+            <Form.Item<DataForForm>
                 label="name"
                 name="name"
-                initialValue={"nombre"}
+                initialValue={product.name}
                 rules={[{ required: true, message: 'Please input your name!' }]}
                 >
                 <Input />
             </Form.Item>
 
-            <Form.Item<FieldType>
+            <Form.Item<DataForForm>
                 label="description"
                 name="description"
-                initialValue={"desvs"}
+                initialValue={product.description}
                 rules={[{ required: true, message: 'Please input the description!' }]}
                 >
                 <Input />
@@ -42,5 +47,7 @@ export default function ReusableForm ({style, id, executableFunction}: {style?: 
                 </Button>
             </Form.Item>
         </Form>
+        }
+        </>
     )
 }

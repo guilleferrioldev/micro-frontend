@@ -1,5 +1,5 @@
-import { TableOfProducts } from "@/components";
+import ReusableForm from "@/components/ui/form";
 
 export default function Home() {
-  return <TableOfProducts/>
+  return <></>
 }

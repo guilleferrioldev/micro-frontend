@@ -1,6 +1,6 @@
 import { Space, Table } from 'antd';
 import { LinkAsButton } from '@/components';
-import useProducts from '@/components/hooks/useProductsHooks';
+import useProducts from '@/components/hooks/useProductsHook';
 import { ResponseData} from "@/components/types";
 
 const { Column, ColumnGroup } = Table;

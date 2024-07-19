@@ -5,7 +5,7 @@ export default function Header () {
     return (
         <header className={styles.header}>
             <h1>Micro Frontend Test</h1>
-            <Link href="/nuevo">Insert New Product</Link>
+            <Link href="/new">Insert New Product</Link>
         </header>
     )
 }
