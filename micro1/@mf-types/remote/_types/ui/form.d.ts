@@ -1,5 +1,3 @@
-export default function ReusableForm({ style, id, executableFunction }: {
-    style?: React.CSSProperties;
+export default function ReusableForm({ id }: {
     id: string;
-    executableFunction: Function;
 }): import("react").JSX.Element;

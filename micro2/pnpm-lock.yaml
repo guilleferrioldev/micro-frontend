@@ -32,6 +32,9 @@ importers:
       next:
         specifier: 13.4.17
         version: 13.4.17(@babel/core@7.24.9)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      nextjs-cors:
+        specifier: ^2.2.0
+        version: 2.2.0(next@13.4.17(@babel/core@7.24.9)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       prisma:
         specifier: ^5.17.0
         version: 5.17.0
@@ -903,6 +906,10 @@ packages:
   core-js-compat@3.37.1:
     resolution: {integrity: sha512-9TNiImhKvQqSUkOvk/mMRZzOANTiEVC7WaBNhHcKM7x+/5E1l5NvsysR19zuDQScE8k+kfQXWRN3AtS/eOSHpg==}
 
+  cors@2.8.5:
+    resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
+    engines: {node: '>= 0.10'}
+
   cron-parser@4.9.0:
     resolution: {integrity: sha512-p0SaNjrHOnQeR8/VnfGbmg9te2kfyYSQ7Sc/j/6DtPL3JQvKxmjO9TSjNFpujqV3vEYYBvNNvXSxzyksBWAx1Q==}
     engines: {node: '>=12.0.0'}
@@ -1739,6 +1746,11 @@ packages:
         optional: true
       sass:
         optional: true
+
+  nextjs-cors@2.2.0:
+    resolution: {integrity: sha512-FZu/A+L59J4POJNqwXYyCPDvsLDeu5HjSBvytzS6lsrJeDz5cmnH45zV+VoNic0hjaeER9xGaiIjZIWzEHnxQg==}
+    peerDependencies:
+      next: ^8.1.1-canary.54 || ^9.0.0 || ^10.0.0-0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -3637,6 +3649,11 @@ snapshots:
     dependencies:
       browserslist: 4.23.2
 
+  cors@2.8.5:
+    dependencies:
+      object-assign: 4.1.1
+      vary: 1.1.2
+
   cron-parser@4.9.0:
     dependencies:
       luxon: 3.4.4
@@ -4655,6 +4672,11 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+
+  nextjs-cors@2.2.0(next@13.4.17(@babel/core@7.24.9)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
+    dependencies:
+      cors: 2.8.5
+      next: 13.4.17(@babel/core@7.24.9)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
   node-fetch@2.7.0(encoding@0.1.13):
     dependencies:

@@ -1,32 +1,30 @@
 import { Button, Form, FormProps, Input } from "antd";
-import useProduct from "@/components/hooks/useProductHook";
+import { useProduct } from "@/components/hooks";
 import { DataForForm } from "@/components/types";
+import { DataNotFound } from '@/components';
+import { createOrUpdateAction } from "@/components/actions";
+import router from "next/router";
 
-export default function ReusableForm ({style, id, executableFunction}: {style?: React.CSSProperties, id: string, executableFunction: Function}) {
-    let product: DataForForm | undefined
-    if (id === "new") {
-        product = {name : "", description: ""}
-    } else {
-        product = useProduct(id) 
-    }
-
-    const onFinish: FormProps<DataForForm>['onFinish'] = (values) => {
-        executableFunction()
+export default function ReusableForm ({id}: {id: string}) {
+    const product = useProduct(id) 
+ 
+    const onFinish: FormProps<DataForForm>['onFinish'] = async (values) => {
+        await createOrUpdateAction(values, id)
+        router.push("/")
     };
 
     return (
         <>        
-        {product && 
-        <Form style={style}
+        {product ?
+        <Form style={{ maxWidth: 600 }}
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
             onFinish={onFinish}
-            initialValues={{ remember: true }}
+            initialValues={product}
             autoComplete="on">
             <Form.Item<DataForForm>
                 label="name"
                 name="name"
-                initialValue={product.name}
                 rules={[{ required: true, message: 'Please input your name!' }]}
                 >
                 <Input />
@@ -35,7 +33,6 @@ export default function ReusableForm ({style, id, executableFunction}: {style?: 
             <Form.Item<DataForForm>
                 label="description"
                 name="description"
-                initialValue={product.description}
                 rules={[{ required: true, message: 'Please input the description!' }]}
                 >
                 <Input />
@@ -47,7 +44,7 @@ export default function ReusableForm ({style, id, executableFunction}: {style?: 
                 </Button>
             </Form.Item>
         </Form>
-        }
+        : <DataNotFound/>}
         </>
     )
 }

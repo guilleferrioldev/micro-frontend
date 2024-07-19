@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { DataForForm } from "@/components/types";
+import { DataForForm, ResponseMessage } from "@/components/types";
 
 export default function useProduct (id: string) {
-    const [product, setProduct] = useState<DataForForm>();
+    if (id === 'new') {
+      return {name : "", description: ""}
+    }
+
+    const [product, setProduct] = useState<DataForForm | ResponseMessage>();
   
     useEffect(() => {
       const fetchData = async () => {
@@ -17,6 +21,8 @@ export default function useProduct (id: string) {
   
       fetchData();
     }, []);
-
-    return product
+    
+    if (product && 'name' in product) {
+      return product
+    }  
 }

@@ -21,7 +21,7 @@ export default function Page() {
   return (
     <main style={{ width: '100dvw', height: '100dvh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '10px'}}>
         <WrapperForm id={id}>
-            <FormComponent style={{ maxWidth: 600 }} id={id} executableFunction={() => router.push("/")}/>
+            <FormComponent id={id}/>
         </WrapperForm>
     </main>
   )

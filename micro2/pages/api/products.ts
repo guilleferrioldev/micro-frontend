@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Data, ResponseMessage } from '@/components/types';
+import NextCors from 'nextjs-cors';
 
 const prisma = new PrismaClient();
 
@@ -8,6 +9,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data[] | ResponseMessage>
 ) {
+  await NextCors(req, res, {
+    methods: ['GET'],
+    origin: '*',
+    optionsSuccessStatus: 200, 
+  });
+
   if (req.method === 'GET') {
     try {
       const products = await prisma.product.findMany();
