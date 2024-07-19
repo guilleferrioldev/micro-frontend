@@ -22,7 +22,7 @@ export default function Home() {
       <main className={`${inter.className}`}>
         <Header/>
         <section style={{display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100dvw', padding: 10, marginTop: 100, marginBottom: 50}}>
-          <TableComponent style={{overflow: 'scroll'}}/>
+          <TableComponent/>
         </section>
       </main>
     </>

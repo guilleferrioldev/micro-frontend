@@ -5,11 +5,11 @@ import { ResponseData} from "@/components/types";
 
 const { Column, ColumnGroup } = Table;
 
-export default function TableOfProducts ({style}: {style?: React.CSSProperties}) {
+export default function TableOfProducts () {
     const data = useProducts()
 
     return (
-        <Table dataSource={data} style={style}>
+        <Table dataSource={data} style={{overflow: 'scroll'}}>
             <ColumnGroup title="Info">
                 <Column title="Name" dataIndex="name" key="name" />
                 <Column title="Description" dataIndex="description" key="description" />

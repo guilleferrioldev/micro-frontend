@@ -30,6 +30,9 @@ const nextConfig = {
         './link': './components/ui/linkAsButton.tsx'
       },
       shared: {},
+      extraOptions: {
+        exposePages: true
+      }
     }
     config.plugins.push(
       new NextFederationPlugin(federationConfig),
