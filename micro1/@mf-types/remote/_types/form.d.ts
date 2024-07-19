@@ -1,4 +1,4 @@
-export default function FormReusable({ style, id, executableFunction }: {
+export default function ReusableForm({ style, id, executableFunction }: {
     style?: React.CSSProperties;
     id?: string;
     executableFunction: Function;

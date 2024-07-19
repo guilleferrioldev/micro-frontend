@@ -5,7 +5,7 @@ type FieldType = {
     description?: string;
 };
 
-export default function FormReusable ({style, id, executableFunction}: {style?: React.CSSProperties, id?: string, executableFunction: Function}) {
+export default function ReusableForm ({style, id, executableFunction}: {style?: React.CSSProperties, id?: string, executableFunction: Function}) {
     const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
         console.log('Success:', {values, id: id});
         executableFunction()

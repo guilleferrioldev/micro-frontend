@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "*": ["./@mf-types/*"]
+      "*": ["./@mf-types/*"],
+      "@components/types": ["src/components/types.d.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
