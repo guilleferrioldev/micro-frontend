@@ -1,5 +1,5 @@
 import { Button, Space, Table } from 'antd';
-import router from 'next/router';
+import Link from 'next/link';
 
 const { Column, ColumnGroup } = Table;
 
@@ -83,28 +83,28 @@ const data: DataType[] = [
           updatedAt: new Date().toString()
         },
         {
-            id: '3',
+            id: '7',
             name: 'Joe',
             description: 'Black',
             createdAt: new Date().toString(),
             updatedAt: new Date().toString()
           },
           {
-              id: '4',
+              id: '8',
               name: 'John',
               description: 'Brown',
               createdAt: new Date().toString(),
               updatedAt: new Date().toString()
             },
             {
-              id: '5',
+              id: '9',
               name: 'Jim',
               description: 'Green',
               createdAt: new Date().toString(),
               updatedAt: new Date().toString()
             },
             {
-              id: '6',
+              id: '10',
               name: 'Joe',
               description: 'Black',
               createdAt: new Date().toString(),
@@ -112,20 +112,44 @@ const data: DataType[] = [
             },
   ];
 
+const linkStyle = {
+  textDecoration: 'none',
+  color: '#fff',
+  boxShadow: '0 2px 0 rgba(5, 145, 255, 0.1)',
+  fontSize: '14px',
+  height: '32px',
+  padding: '4px 15px',
+  borderRadius: '6px',
+  outline: 'none',
+  position: 'relative',
+  display: 'inline-flex',
+  gap: '8px',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontWeight: '400',
+  textAlign: 'center',
+  border: '1px solid transparent',
+  cursor: 'pointer',
+  transition: 'all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)'
+} as React.CSSProperties
+
+
 export default function TableOfProducts ({style}: {style?: React.CSSProperties}) {
     return (
-        <Table dataSource={data} style={style} pagination={false}>
+        <Table dataSource={data} style={style}>
             <ColumnGroup title="Info">
                 <Column title="Name" dataIndex="name" key="name" />
                 <Column title="Description" dataIndex="description" key="description" />
             </ColumnGroup>
-            <Column title="Created At" dataIndex="createdAt" key="createdAt" />
-            <Column title="Updated At" dataIndex="updatedAt" key="updatedAt" />
+            <ColumnGroup title="Date">
+              <Column title="Created At" dataIndex="createdAt" key="createdAt" />
+              <Column title="Updated At" dataIndex="updatedAt" key="updatedAt" />
+            </ColumnGroup>
             <Column title="Action" key="action" 
                 render={(_: any, record: DataType) => (
                     <Space size="middle">
-                        <Button type="primary" htmlType="button" onClick={() => router.push(`/${record.id}`)}>Edit</Button>
-                        <Button type="primary" htmlType="button" style={{ background: 'red'}} onClick={() => router.push(`/delete/${record.id}`)}>Delete</Button>
+                        <Link style={{...linkStyle, background: '#1677ff'}} href={`/${record.id}`}>Edit</Link>
+                        <Link style={{...linkStyle, background: 'red'}} href={`/delete/${record.id}`}>Delete</Link>
                     </Space>
                 )}/>
         </Table>

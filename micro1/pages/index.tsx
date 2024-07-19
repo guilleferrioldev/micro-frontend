@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
-import { Header } from '@/components/index'
+import { Header } from '@/components'
 import dynamic from 'next/dynamic'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,7 +21,7 @@ export default function Home() {
       </Head>
       <main className={`${inter.className}`}>
         <Header/>
-        <section style={{display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100dvw', padding: 10, marginTop: 120, marginBottom: 50}}>
+        <section style={{display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100dvw', padding: 10, marginTop: 100, marginBottom: 50}}>
           <TableComponent style={{overflow: 'scroll'}}/>
         </section>
       </main>

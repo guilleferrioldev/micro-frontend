@@ -18,6 +18,32 @@
   min-width: 70%;
 }
 
+.header a {
+  text-decoration: none;
+  color: #fff;
+  background: #1677ff;
+  box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+  font-size: 14px;
+  height: 32px;
+  padding: 4px 15px;
+  border-radius: 6px;
+  outline: none;
+  position: relative;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  text-align: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.header a:hover {
+  opacity: 0.8;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .header {

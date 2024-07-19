@@ -1,3 +1,5 @@
 export default function Page() {
-    <main></main>
+    return (
+        <main></main>
+    )
 }

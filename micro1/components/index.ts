@@ -1,7 +1,7 @@
 import Header from '@/components/ui/header'
-import NewButton from "@/components/ui/button";
+import WrapperForm from './ui/wrapperForm'
 
 export {
     Header,
-    NewButton
+    WrapperForm
 }

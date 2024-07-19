@@ -1,6 +1,6 @@
-import WrapperForm from '@/components/ui/wrapperForm'
+import { WrapperForm } from '@/components'
 import dynamic from 'next/dynamic'
-import router from 'next/router';
+import { useRouter } from 'next/router';
 
 const FormComponent = dynamic(() => import("remote/form"), {
     ssr: false,
@@ -8,6 +8,7 @@ const FormComponent = dynamic(() => import("remote/form"), {
  })
 
 export default function Page() {
+  const router = useRouter()
   let id: string;
   if (typeof router.query.id === 'string') {
     id = router.query.id;
