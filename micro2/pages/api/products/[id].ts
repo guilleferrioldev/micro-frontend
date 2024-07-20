@@ -1,8 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
 import NextCors from 'nextjs-cors';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await NextCors(req, res, {
@@ -78,7 +76,6 @@ const updateProductById = async (req: NextApiRequest, res: NextApiResponse) => {
     data: {
       name: data.name,
       description: data.description,
-      updatedAt: new Date(),
     },
   });
   return res.status(200).json({updatedProduct, data});

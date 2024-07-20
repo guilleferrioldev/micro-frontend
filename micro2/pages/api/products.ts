@@ -1,9 +1,7 @@
-import { PrismaClient } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Product, ResponseMessage } from '@/components/types';
 import NextCors from 'nextjs-cors';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma'
 
 export default async function handler(
   req: NextApiRequest,
