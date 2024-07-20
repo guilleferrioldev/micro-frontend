@@ -1,2 +1,2 @@
-import { DataForForm } from "@/components/types";
-export declare function createOrUpdateAction(data: DataForForm, id: string): Promise<any>;
+import { ProductForForm } from "@/components/types";
+export declare function createOrUpdateAction(data: ProductForForm, id: string): Promise<any>;

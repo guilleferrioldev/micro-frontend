@@ -8,15 +8,17 @@ export default function useProduct (id: string) {
     }
 
     const [product, setProduct] = useState<ProductForForm>();
+    const [isLoading, setIsLoading] = useState(true);
   
     useEffect(() => {
       const fetchData = async () => {
         const data = await getProductByIdAction(id)
         setProduct(data);
+        setIsLoading(false)
       };
   
       fetchData();
-    }, []);
+    }, [id]);
     
-    return product
+    return {product, isLoading}
 }

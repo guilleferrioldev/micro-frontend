@@ -4,22 +4,28 @@ import { ProductForForm } from "@/components/types";
 import { createOrUpdateAction } from "@/components/actions";
 import router, { useRouter } from "next/router";
 
-const withProductAndID = <Props extends object>(Component: React.ComponentType<Props & { product: ProductForForm, id: string }>) => {
+const withProductAndId = <Props extends object>(Component: React.ComponentType<Props & { product?: ProductForForm, id: string }>) => {
     return function EnhancedComponent(props: Props) {
       const router = useRouter();
       const id = router.query.id as string;
-      const product = useProduct(id);
-  
-      return product ? <Component {...props} product={product} id={id}/> : <Empty/>;
+      const {product, isLoading} = useProduct(id);
+
+      return !isLoading ? (
+        product && id !== "new" ? 
+          <Component {...props} product={product} id={id}/> :
+        !product && id === "new" ? 
+          <Component {...props} id={id}/> : 
+          <Empty />
+      ) : <></>; 
     };
   };
 
-function ReusableForm ({ product, id }: {product: ProductForForm, id: string}) { 
+function ReusableForm ({ product, id }: {product?: ProductForForm, id: string}) { 
     const onFinish: FormProps<ProductForForm>['onFinish'] = async (values) => {
         await createOrUpdateAction(values, id)
         router.push("/")
     };
-
+    
     return (
         <Form style={{ maxWidth: 600 }}
             labelCol={{ span: 8 }}
@@ -52,4 +58,4 @@ function ReusableForm ({ product, id }: {product: ProductForForm, id: string}) {
     )
 }
 
-export default withProductAndID(ReusableForm);
+export default withProductAndId(ReusableForm);
