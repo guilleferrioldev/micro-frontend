@@ -3,9 +3,11 @@ import { useProduct } from "@/components/hooks";
 import { DataForForm } from "@/components/types";
 import { DataNotFound } from '@/components';
 import { createOrUpdateAction } from "@/components/actions";
-import router from "next/router";
+import { useRouter } from "next/router";
 
-export default function ReusableForm ({id}: {id: string}) {
+export default function ReusableForm () {
+    const router = useRouter()
+    const id = router.query.id as string
     const product = useProduct(id) 
  
     const onFinish: FormProps<DataForForm>['onFinish'] = async (values) => {

@@ -21,7 +21,6 @@
 .header a {
   text-decoration: none;
   color: #fff;
-  background: #1677ff;
   box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
   font-size: 14px;
   height: 32px;
@@ -33,7 +32,7 @@
   gap: 8px;
   align-items: center;
   justify-content: center;
-  font-weight: 400;
+  font-weight: 800;
   text-align: center;
   border: 1px solid transparent;
   cursor: pointer;
@@ -48,7 +47,6 @@
 @media (max-width: 768px) {
   .header {
     padding: 1rem;
-    flex-direction: column;
     gap: 10px;
   }
   .header h1 {

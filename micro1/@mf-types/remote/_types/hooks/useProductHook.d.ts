@@ -1,4 +1,1 @@
-export default function useProduct(id: string): {
-    name: string;
-    description: string;
-} | undefined;
+export default function useProduct(id: string): Partial<Pick<import("@/components/types").Data, "name" | "description">> | undefined;

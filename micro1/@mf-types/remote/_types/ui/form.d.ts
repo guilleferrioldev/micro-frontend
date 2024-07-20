@@ -1,3 +1,1 @@
-export default function ReusableForm({ id }: {
-    id: string;
-}): import("react").JSX.Element;
+export default function ReusableForm(): import("react").JSX.Element;

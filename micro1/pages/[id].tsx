@@ -1,28 +1,12 @@
-import { WrapperForm } from '@/components'
-import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router';
+import { RemoteForm, WrapperForm } from '@/components'
+import { useRouter } from 'next/router'
 
-const FormComponent = dynamic(() => import("remote/form"), {
-    ssr: false,
-    suspense: true
- })
-
-export default function Page() {
+export default function IdPage() {
   const router = useRouter()
-  let id: string;
-  if (typeof router.query.id === 'string') {
-    id = router.query.id;
-  } else if (Array.isArray(router.query.id)) {
-    id = router.query.id[0];
-  } else {
-    id = '';
-  }
 
   return (
-    <main style={{ width: '100dvw', height: '100dvh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '10px'}}>
-        <WrapperForm id={id}>
-            <FormComponent id={id}/>
-        </WrapperForm>
-    </main>
+      <WrapperForm text={router.query.id === 'new' ? 'New Product' : 'Update Product'}>
+          <RemoteForm/>
+      </WrapperForm>
   )
 }

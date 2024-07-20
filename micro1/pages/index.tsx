@@ -1,14 +1,5 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
-import { Header } from '@/components'
-import dynamic from 'next/dynamic'
-
-const inter = Inter({ subsets: ['latin'] })
-
-const TableComponent = dynamic(() => import("remote/table"), {
-  ssr: false,
-  suspense: true
-})
+import { RemoteTable } from '@/components'
 
 export default function Home() {
   return (
@@ -19,12 +10,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${inter.className}`}>
-        <Header/>
-        <section style={{display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100dvw', padding: 10, marginTop: 100, marginBottom: 50}}>
-          <TableComponent/>
+        <section style={{ maxWidth: '100dvw', padding: 20, position: 'absolute', top: 100}}>
+          <RemoteTable/>
         </section>
-      </main>
     </>
   )
 }
