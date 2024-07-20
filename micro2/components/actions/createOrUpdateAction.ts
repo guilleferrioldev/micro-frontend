@@ -1,6 +1,6 @@
-import { DataForForm } from "@/components/types";
+import { ProductForForm } from "@/components/types";
 
-export async function createOrUpdateAction (data: DataForForm, id: string) {
+export async function createOrUpdateAction (data: ProductForForm, id: string) {
     const method = id === 'new' ? 'POST' : 'PATCH'
 
     try {
@@ -13,6 +13,6 @@ export async function createOrUpdateAction (data: DataForForm, id: string) {
         const status = await response.json()
         return status
     } catch (error) {
-        return error
+        console.error(error)
     }
 }

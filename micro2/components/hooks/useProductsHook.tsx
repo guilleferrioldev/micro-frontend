@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
-import { Data, ResponseData } from "@/components/types";
-import { fromDataToResponseData } from "@/components/utils";
+import { Product } from "@/components/types";
+import { deleteAction, getProductsAction } from '@/components/actions';
 
 export default function useProducts () {
-    const [data, setData] = useState<ResponseData[]>([]);
+    const [data, setData] = useState<Product[]>([]);
   
     useEffect(() => {
       const fetchData = async () => {
-        try {
-          const response = await fetch(`${process.env.API_URL}/api/products`);
-          const data: Data[] = await response.json();
-          setData(fromDataToResponseData(data));
-        } catch (error) {
-          console.error('Error fetching products:', error);
+          const data = await getProductsAction();
+          setData(data ?? [])
         }
-      };
-  
       fetchData();
     }, []);
+
+    const deleteProduct = async (id: string) => {
+        await deleteAction(id)
+        setData(prevData => prevData.filter(product => product.id !== id));
+    };
   
-    return data;
+    return {data, deleteProduct};
   };

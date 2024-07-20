@@ -1,28 +1,22 @@
 import { useEffect, useState } from "react";
-import { DataForForm, ResponseMessage } from "@/components/types";
+import { ProductForForm } from "@/components/types";
+import { getProductByIdAction } from "@/components/actions";
 
 export default function useProduct (id: string) {
     if (id === 'new') {
       return {name : "", description: ""}
     }
 
-    const [product, setProduct] = useState<DataForForm | ResponseMessage>();
+    const [product, setProduct] = useState<ProductForForm>();
   
     useEffect(() => {
       const fetchData = async () => {
-        try {
-          const response = await fetch(`${process.env.API_URL}/api/products/${id}`);
-          const data = await response.json();
-          setProduct(data);
-        } catch (error) {
-          console.error('Error fetching products:', error);
-        }
+        const data = await getProductByIdAction(id)
+        setProduct(data);
       };
   
       fetchData();
     }, []);
     
-    if (product && 'name' in product) {
-      return product
-    }  
+    return product
 }

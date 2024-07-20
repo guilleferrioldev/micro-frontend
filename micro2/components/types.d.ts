@@ -1,4 +1,4 @@
-export type Data =  {
+export type Product =  {
     id: string;
     name: string;
     description: string;
@@ -6,6 +6,6 @@ export type Data =  {
     updatedAt: Date | string;
 }
 
-export type DataForForm = Partial<Pick<Data, 'name' | 'description'>>;
+export type ProductForForm = Partial<Pick<Product, 'name' | 'description'>>;
   
 export type ResponseMessage = { message: string }

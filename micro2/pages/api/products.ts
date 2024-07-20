@@ -1,13 +1,13 @@
 import { PrismaClient } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Data, ResponseMessage } from '@/components/types';
+import { Product, ResponseMessage } from '@/components/types';
 import NextCors from 'nextjs-cors';
 
 const prisma = new PrismaClient();
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data[] | ResponseMessage>
+  res: NextApiResponse<Product[] | ResponseMessage>
 ) {
   await NextCors(req, res, {
     methods: ['GET'],
