@@ -4,13 +4,13 @@ import { useRouter } from "next/router";
 
 export default function Header () {
     const router = useRouter()
-    const linkText = router.pathname === '/' ? 'New Product' : 'Go Home';
+    const linkText = router.pathname === '/' ? 'New' : 'Home';
     const linkHref = router.pathname === '/' ? '/new' : '/';
     const linkColor = router.pathname === '/' ? '#1677ff' : 'red';
 
     return (
         <header className={styles.header}>
-            <h1>Micro Frontends</h1>
+            <h2>Micro Frontends</h2>
             <Link href={linkHref} style={{background: linkColor}}>{linkText}</Link>
         </header>
     )

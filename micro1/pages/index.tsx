@@ -1,6 +1,16 @@
 import Head from 'next/head'
 import { RemoteTable } from '@/components'
 
+const sectionStyle = {
+  width: '95dvw',
+  minHeight: '100%',
+  background: 'white', 
+  borderRadius: '10px',
+  boxShadow: '0 0 10px rgb(168, 19, 29, 0.3)',
+  padding: 10,
+  display: 'grid',
+} as React.CSSProperties
+
 export default function Home() {
   return (
     <>
@@ -10,9 +20,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <section style={{ maxWidth: '100dvw', padding: 20, position: 'absolute', top: 100}}>
+        <div style={sectionStyle}>
           <RemoteTable/>
-        </section>
+        </div>
     </>
   )
 }
