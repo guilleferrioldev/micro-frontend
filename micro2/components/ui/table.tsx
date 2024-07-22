@@ -35,7 +35,7 @@ export default function TableOfProducts () {
                 open={isOpen} 
                 onCancel={() => changeOpenCloseState()}
                 onClose={() => changeOpenCloseState()}
-                onOk={async () => {toDelete && deleteProduct(toDelete.id); changeOpenCloseState()}}>
+                onOk={async () => {toDelete && await deleteProduct(toDelete.id); changeOpenCloseState()}}>
             <p>{toDelete?.name}</p>
         </Modal>
         </>
