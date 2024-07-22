@@ -2,12 +2,11 @@ import { Button, Form, FormProps, Input, Empty } from "antd";
 import { useProduct } from "@/components/hooks";
 import { ProductForForm } from "@/components/types";
 import { createOrUpdateAction } from "@/components/actions";
-import router, { useRouter } from "next/router";
+import router from "next/router";
 
-const withProductAndId = <Props extends object>(Component: React.ComponentType<Props & { product?: ProductForForm, id: string }>) => {
+const withProductAndId = <Props extends { id: string }>(Component: React.ComponentType<Props & { product?: ProductForForm, id: string }>) => {
     return function EnhancedComponent(props: Props) {
-      const router = useRouter();
-      const id = router.query.id as string;
+      const { id } = props
       const {product, isLoading} = useProduct(id);
 
       return !isLoading ? (

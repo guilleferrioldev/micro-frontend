@@ -1,12 +1,21 @@
 import { RemoteForm, WrapperForm } from '@/components'
-import { useRouter } from 'next/router'
+import { GetServerSideProps } from 'next'
 
-export default function IdPage() {
-  const router = useRouter()
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { id } = context.query
+  return {
+    props: {
+      id: id
+    },
+  };
+}
+
+export default function IdPage(props: { id: string }) {
+  const { id } = props 
 
   return (
-      <WrapperForm text={router.query.id === 'new' ? 'New Product' : 'Update Product'}>
-          <RemoteForm/>
+      <WrapperForm text={id === 'new' ? 'New Product' : 'Update Product'}>
+          <RemoteForm id={id}/>
       </WrapperForm>
   )
 }
